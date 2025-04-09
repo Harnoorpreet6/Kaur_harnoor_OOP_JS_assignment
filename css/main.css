@@ -1,0 +1,197 @@
+/* Font import (optional) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans&display=swap');
+
+/* Body styling for recipe-book feel */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(#fffaf0, #fefefe);
+    color: #333;
+    transition: background 0.4s, color 0.4s;
+}
+
+/* Header like a book cover */
+.book-header {
+    text-align: center;
+    padding: 40px 20px 10px;
+    background-color: #fff5e6;
+    border-bottom: 3px solid #f2d1b3;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Playfair Display', serif;
+}
+
+.book-header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: #c1440e;
+}
+
+.book-header p {
+    font-size: 1.2rem;
+    color: #6e422e;
+    margin-top: 8px;
+}
+
+/* Updated recipe grid */
+.recipe-card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Card styles with subtle shadows and texture */
+.single-recipe {
+    background: #fffefb;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid #f6e8d9;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 0.6s ease;
+}
+
+.single-recipe:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Typography inside cards */
+.single-recipe h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #b2502f;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed #e2c9ac;
+    padding-bottom: 5px;
+}
+
+.single-recipe p {
+    font-size: 1rem;
+    color: #5b4a42;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .recipe-card {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .recipe-card .single-recipe:nth-child(3) {
+        grid-column: span 2;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .recipe-card {
+        grid-template-columns: 1fr;
+    }
+
+    .single-recipe {
+        margin-bottom: 20px;
+    }
+}
+
+/* Theme-specific colors and variables */
+:root {
+    --bg-color: #fff;
+    --text-color: #111;
+    --card-bg: #f2f2f2;
+    --accent-color: #ff7e5f;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg-color: #1c1c1c;
+    --text-color: #f2f2f2;
+    --card-bg: #2a2a2a;
+    --accent-color: #ffa07a;
+    --shadow: rgba(255, 255, 255, 0.1);
+}
+
+/* Apply styles for body */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.4s, color 0.4s;
+}
+
+/* Card styles */
+.single-recipe {
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 10px var(--shadow);
+    transition: background-color 0.4s, box-shadow 0.4s;
+}
+
+/* Theme toggle button */
+#theme-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: none;
+    padding: 0.5em 0.75em;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px var(--shadow);
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+#theme-toggle:hover {
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+/* Layout container (optional but helpful) */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Basic layout for recipe container */
+.recipe-container {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+}
+/* Dark Mode Text Color Adjustments */
+[data-theme="dark"] .single-recipe p {
+    color: #e96d6d;  /* Lighter color for dark mode, making it easier to read */
+}
+
+/* If you want to change the color of the headings too, use this */
+[data-theme="dark"] .single-recipe h2 {
+    color: #f2f2f2;  /* Slightly lighter color for the headings in dark mode */
+}
+@media (max-width: 768px) {
+    .recipe-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  
+    .recipe-card {
+      width: 100%;
+    }
+  }
+  
